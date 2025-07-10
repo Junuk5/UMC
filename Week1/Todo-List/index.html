@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>UMC Study Plan</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #ffffff;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    input {
+      padding: 10px;
+      width: 300px;
+      font-size: 1em;
+    }
+    .list-container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+    }
+    .list {
+      width: 40%;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      padding: 8px;
+      margin: 5px 0;
+      background: #ffffff;
+      border: 1px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    /* 완료시 */
+    .completed {
+      /* 그음표 처리 */
+      /* text-decoration: line-through; */
+      color: gray;
+    }
+    .delete {
+      background: none;
+      border: none;
+      color: red;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .complete-button {
+      background-color: green;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>UMC Study Plan</h1>
+  <input id="todo-input" type="text" placeholder="스터디 계획을 작성해보세요!" />
+
+  <div class="list-container">
+    <div class="list">
+      <h3>해야 할 일</h3>
+      <ul id="todo-list"></ul>
+    </div>
+    <div class="list">
+      <h3>해낸 일</h3>
+      <ul id="done-list"></ul>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById("todo-input");
+    const todoList = document.getElementById("todo-list");
+    const doneList = document.getElementById("done-list");
+
+    input.addEventListener("keypress", function (e) {
+      if (e.key === "Enter") addTodo();
+    });
+
+    function addTodo() {
+      const text = input.value.trim();
+      if (!text) return;
+
+      const li = document.createElement("li");
+      const completeBtn = document.createElement("button");
+      completeBtn.textContent = "완료";
+      completeBtn.className = "complete-button";
+      completeBtn.onclick = () => moveToDone(li);
+
+      li.textContent = text;
+      li.appendChild(completeBtn);
+
+      todoList.appendChild(li);
+      input.value = "";
+    }
+
+    function moveToDone(item) {
+      item.classList.add("completed");
+      todoList.removeChild(item);
+      doneList.appendChild(item);
+
+      const completeBtn = item.querySelector(".complete-button");
+      if (completeBtn) completeBtn.remove();
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "삭제";
+      deleteBtn.className = "delete";
+      deleteBtn.onclick = () => removeItem(deleteBtn);
+      item.appendChild(deleteBtn);
+    }
+
+    function removeItem(button) {
+      const li = button.parentElement;
+      li.parentElement.removeChild(li);
+    }
+  </script>
+</body>
+</html>
