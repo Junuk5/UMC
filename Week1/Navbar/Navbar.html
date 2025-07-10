@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SMUMC</title>
+  <style>
+    /* 전체 스타일 */
+    * { 
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box; 
+    }
+    body {
+      font-family: sans-serif;
+      background-color: #f0f2f5;
+    }
+
+    /* Navbar 래퍼 */
+    .navbar {
+      background-color: #ffffff;
+      margin: 1rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* 내부 컨테이너: 좌우 정렬 */
+    .navbar .container {
+      display: flex;  
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      width: 32px;
+      height: 32px;
+      margin-right: 0.5rem;
+    }
+    .logo span {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    /* 네비게이션 */
+    .nav-links {
+      list-style: none;
+      display: flex;              
+      gap: 1.5rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #333;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover {
+      color: #000;
+    }
+
+    /* 카테고리 */
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .theme-toggle svg {
+      width: 24px;
+      height: 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container">
+      <!-- 좌측: 로고 -->
+      <div class="logo">
+        <img src="logo.png" alt="SMUMC Logo">
+        <span>SMUMC</span>
+      </div>
+
+      <!-- 우측: 메뉴 + 토글 -->
+      <div style="display: flex; align-items: center; gap: 1.5rem;">
+        <ul class="nav-links">
+          <li><a href="#">PROJECTS</a></li>
+          <li><a href="#">MEMBERS</a></li>
+          <li><a href="#">NOTICE</a></li>
+        </ul>
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <!-- 태양 모양 아이콘 -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"
+               viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 3v2m0 14v2m9-9h-2M5 12H3
+                     m15.364-6.364l-1.414 1.414
+                     M6.05 17.95l-1.414 1.414
+                     m0-15.364l1.414 1.414
+                     M17.95 17.95l1.414 1.414
+                     M12 7a5 5 0 100 10a5 5 0 000-10z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- 메인 콘텐츠는 비워두기 -->
+  </main>
+
+</body>
+</html>
